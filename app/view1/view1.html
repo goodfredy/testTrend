@@ -1,0 +1,83 @@
+<div class="col-md-12 col-sm-12 col-xs-12 main__wrap" ng-app="myTreeview">
+    <div class="col-md-2 col-sm-1 col-xs-1" >
+        &nbsp;
+    </div>
+    <div class="col-md-8 col-sm-10 col-xs-10 main__wrap_inner" ng-controller="myTreeviewCtrl">
+        <div class="row">
+            <h1>Калькулятор рассрочки</h1>
+            <div class="col-md-6 col-sm-6 col-xs-12 calculator__wrap_left">
+                <div>
+                    <div>
+                        <div class="bx_filter bx_horizontal" ng-init="fetch()">
+                            <div class="bx_filter_section" style="position: relative;">
+                                <div style="position: relative;" >
+                                    <ul class="opac_tree" ng-repeat="item in dataJson">
+                                        <li>
+                                            <h5>Выберите программу рассрочки</h5>
+                                            <select onchange="onTopChangeSelect()" ng-model="checked_prog" id="calculator__select_prog" ng-change="getMinPrice()">
+                                                 <option ng-repeat="item_prog in item.data" value="{{item_prog.id}}">
+                                                      {{item_prog.name}}
+                                                 </option>
+                                            </select>
+                                        </li>
+                                        <li ng-repeat="item_prog in item.data" ng-if="item_prog.id == checked_prog" >
+                                            <div ng-repeat="item_props in item_prog.props" id="{{item_props.id}}">
+                                                <h5>{{item_props.name}}</h5>
+                                                <input ng-focus="trimInput()" ng-blur="getPrvBlur()" ng-click="get_query()" ng-keyup="get_query()" type="text" ng-if="item_props.type == 'input'" data-min="{{item_props.min}}" data-max="{{item_props.max}}" data-parent="{{item_props.parent}}">
+                                                <select onchange="onChangeSelect()" ng-if="item_props.type == 'select'">
+                                                      <option ng-repeat="item_values in item_props.values" value="{{item_values.value}}" data-minprice="{{item_values.min_price}}">
+                                                           {{item_values.name}}
+                                                      </option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="btn_blue" ng-click="get_query()">Рассчитать</a>
+                                        </li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 calculator__wrap_right">
+                <div id="calculator__data_prog"></div>
+                <div id="calculator__data_title"></div>
+                <div id="calculator__data_value"><span id="calculator__data_value_cost"></span> &#8381;/<span id="calculator__data_value_platez"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-1 col-xs-1" >
+        &nbsp;
+    </div>
+</div>
+
+<script>
+
+</script>
+
+<script>
+        setTimeout(function() {
+            $("#calculator__select_prog option:eq(1)").change();
+        }, 500);
+
+        var onChangeSelect = function() {
+            setTimeout(function() {
+                $('#price input').val($('#buildings select option:selected').data('minprice'));
+                $('#price input').attr({'readonly':'readonly'});
+                $('#first_pay input').val(parseInt($('#first_pay input').data('min') * $('#'+$('#first_pay input').data('parent')+' input').val() + 1));
+                $('#first_pay input').click();
+            }, 100);
+            onTopChangeSelect();
+        };
+
+        var onTopChangeSelect = function() {
+            setTimeout(function() {
+                var cost_first = $('#first_pay input').val();
+                cost_first = String(cost_first).split(" ").join("").split("").reverse().join("").replace(/(.{3}\B)/g, "$1 ").split("").reverse().join("");
+                $('#first_pay input').val(cost_first);
+            }, 100);
+        };
+
+</script>

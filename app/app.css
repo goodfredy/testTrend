@@ -1,0 +1,109 @@
+/* app css stylesheet */
+
+h1 {
+  font-size: 30px !important;
+  margin: 0 0 20px 0 !important;
+}
+
+h5 {
+  color: #616161 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  margin: 15px 0 10px 0 !important;
+}
+
+.main__wrap {
+  padding: 40px 0;
+}
+.main__wrap_inner {
+  margin: 0 auto;
+}
+
+.calculator__wrap_left {
+  background: #f8f8f8;
+  height: 480px;
+}
+
+.calculator__wrap_right {
+  background: #eeeded;
+  height: 480px;
+  text-align: center;
+}
+
+.opac_tree {
+  margin: 0;
+  padding: 15px 0;
+}
+
+.opac_tree li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+select {
+  border: thin solid #c2c2c2;
+  border-radius: 0;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 2.5em 0.5em 1em;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100% !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  background: url(images/select_bg.png) right center #fff no-repeat;
+}
+
+input {
+  background-color: white;
+  border: thin solid #c2c2c2;
+  border-radius: 0;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 2.5em 0.5em 1em;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100% !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+a.btn_blue {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px;
+  background: #0366cb;
+  color: #fff !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  display: block;
+  margin: 15px 0;
+  text-align: center;
+}
+
+a.btn_blue:hover {
+  background: #1376db;
+}
+
+#calculator__data_prog {
+  margin: 170px 0 20px 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#calculator__data_value {
+  margin: 20px 0 0 0;
+  font-weight: 600;
+  font-size: 25px;
+}
